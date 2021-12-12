@@ -27,4 +27,21 @@
 # through the app.route decorator exposed by the application instance,
 # which registers the decorated function as a route.
 
-#
+# The portion enclosed in angle brackets is the dynamic part.
+# Any URLs that match the static portions will be mapped to the route.
+# When the view function is invoked, Flask sends the dynamic component as an argument.
+
+# The dynamic components in routes are STRINGS by default but can also be defined with A TYPE.
+# For example, route /user/<int:id> would match only URLs that have an integer in the id dynamic segment.
+
+# Flask supports types int, float, and path for routes.
+# The path type also represents a string but DOES NOT CONSIDER slashes as separators,
+# instead considers them part of the dynamic component.
+
+# Server Startup
+
+# Once the server starts up, it goes into a loop that waits for requests and services them.
+# This loop continues until the application is stopped.
+# During development, it is convenient to enable debug mode,
+# which among other things activates the debugger and the reloader:
+# -> pass the argument debug set to True.

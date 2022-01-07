@@ -45,3 +45,29 @@
 # During development, it is convenient to enable debug mode,
 # which among other things activates the debugger and the reloader:
 # -> pass the argument debug set to True.
+
+# The Request-Response Cycle
+
+# Application and Request Contexts
+# When Flask receives a request from a client, it needs to make a few objects available to
+# the view function that will handle it.
+
+# To avoid cluttering view functions with lots of arguments that may or may not be needed,
+# Flask uses contexts to temporarily make certain objects globally accessible.
+
+# request cannot be a global variable if you consider that in a multithreaded server the
+# threads are working on different requests from different clients at the same time, so
+# each thread needs to see a different object in request.
+# Contexts enable Flask to make certain variables globally accessible to a thread
+# without interfering with the other threads.
+
+# A thread is the smallest sequence of instructions that can be managed
+# independently. It is common for a process to have multiple active
+# threads, sometimes sharing resources such as memory or file
+# handles. Multithreaded web servers start a pool of threads and select
+# a thread from the pool to handle each incoming request.
+
+# There are two contexts in Flask: the application context and the request context.
+
+# Flask activates (or pushes) the application and request contexts before dispatching a
+# request and then removes them when the request is handled.
